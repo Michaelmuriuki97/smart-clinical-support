@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Clinical Intelligence | Polypharm ADE Support
+  </title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="images/logo.png"
+  >
+
+  <!-- Existing project design -->
+  <link
+    rel="stylesheet"
+    href="main.css"
+  >
+
+  <!-- Clinical Intelligence design -->
+  <link
+    rel="stylesheet"
+    href="clinical-intelligence.css"
+  >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     BACKGROUND EFFECTS
+===================================================== -->
+
+<div class="ci-background">
+
+  <div class="ci-orb orb-one"></div>
+
+  <div class="ci-orb orb-two"></div>
+
+  <div class="ci-orb orb-three"></div>
+
+</div>
+
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="ci-header">
+
+  <div class="ci-header-inner">
+
+    <a
+      href="index.html"
+      class="ci-brand"
+    >
+
+      <div class="ci-brand-logo">
+
+        <img
+          src="images/logo.png"
+          alt="Polypharm ADE"
+        >
+
+      </div>
+
+      <div>
+
+        <strong>
+          Polypharm ADE
+        </strong>
+
+        <span>
+          Clinical Intelligence
+        </span>
+
+      </div>
+
+    </a>
+
+
+    <a
+      href="index.html"
+      class="ci-back"
+    >
+      ← Back to Project
+    </a>
+
+  </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN APPLICATION
+===================================================== -->
+
+<main class="clinical-app">
+
+
+  <!-- ===================================================
+       PAGE INTRO
+  =================================================== -->
+
+  <section class="ci-intro">
+
+    <div class="ci-status">
+
+      <span class="ci-status-dot"></span>
+
+      CLINICAL INTELLIGENCE ENGINE
+
+    </div>
+
+
+    <h1>
+
+      Intelligent Medication
+      <span>Risk Analysis</span>
+
+    </h1>
+
+
+    <p>
+
+      A research prototype for analysing medication profiles,
+      identifying potential medication-related risks and
+      generating structured alerts for healthcare professional
+      review.
+
+    </p>
+
+  </section>
+
+
+
+  <!-- ===================================================
+       DASHBOARD
+  =================================================== -->
+
+  <section class="ci-dashboard">
+
+
+    <!-- ================================================
+         PATIENT PROFILE
+    ================================================= -->
+
+    <div class="ci-card patient-card">
+
+      <div class="ci-card-header">
+
+        <div>
+
+          <span class="ci-label">
+            PATIENT PROFILE
+          </span>
+
+          <h2>
+            Clinical Assessment
+          </h2>
+
+        </div>
+
+        <div class="ci-icon">
+          👤
+        </div>
+
+      </div>
+
+
+      <div class="form-grid">
+
+
+        <div class="form-group">
+
+          <label>
+            Patient ID
+          </label>
+
+          <input
+            type="text"
+            id="patientId"
+            placeholder="e.g. PT-001"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Age
+          </label>
+
+          <input
+            type="number"
+            id="patientAge"
+            placeholder="Age"
+            min="1"
+            max="120"
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Sex
+          </label>
+
+          <select id="patientSex">
+
+            <option value="">
+              Select
+            </option>
+
+            <option value="female">
+              Female
+            </option>
+
+            <option value="male">
+              Male
+            </option>
+
+            <option value="other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label>
+            Renal Status
+          </label>
+
+          <select id="renalStatus">
+
+            <option value="unknown">
+              Unknown
+            </option>
+
+            <option value="normal">
+              No known impairment
+            </option>
+
+            <option value="mild">
+              Mild impairment
+            </option>
+
+            <option value="moderate">
+              Moderate impairment
+            </option>
+
+            <option value="severe">
+              Severe impairment
+            </option>
+
+          </select>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="clinical-note">
+
+        <span>i</span>
+
+        <p>
+          Patient information in this prototype should be
+          de-identified. Do not enter real patient identifiers.
+        </p>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================================================
+         MEDICATION INPUT
+    ================================================= -->
+
+    <div class="ci-card medication-card">
+
+      <div class="ci-card-header">
+
+        <div>
+
+          <span class="ci-label">
+            MEDICATION PROFILE
+          </span>
+
+          <h2>
+            Medication List
+          </h2>
+
+        </div>
+
+        <div class="ci-icon">
+          💊
+        </div>
+
+      </div>
+
+
+      <p class="card-description">
+
+        Add the medicines currently being assessed.
+
+      </p>
+
+
+      <div class="medication-input-row">
+
+        <input
+          type="text"
+          id="medicationInput"
+          placeholder="Enter medication e.g. Warfarin"
+        >
+
+        <button
+          type="button"
+          id="addMedication"
+          class="add-medication-btn"
+        >
+          + Add
+        </button>
+
+      </div>
+
+
+      <div
+        class="medication-list"
+        id="medicationList"
+      >
+
+        <div class="empty-medications">
+
+          No medications added yet.
+
+        </div>
+
+      </div>
+
+
+      <div class="medication-counter">
+
+        <span>
+          Medication count
+        </span>
+
+        <strong id="medicationCount">
+          0
+        </strong>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================================================
+         ANALYSIS CONTROL
+    ================================================= -->
+
+    <div class="analysis-control">
+
+      <div>
+
+        <span class="ci-label">
+          DECISION SUPPORT
+        </span>
+
+        <h2>
+          Run Clinical Analysis
+        </h2>
+
+        <p>
+          Analyse the current medication profile against
+          the prototype safety rule set.
+        </p>
+
+      </div>
+
+
+      <button
+        type="button"
+        id="analyzeButton"
+        class="analyze-button"
+      >
+
+        <span class="analyze-icon">
+          ✦
+        </span>
+
+        Analyse Medication Profile
+
+      </button>
+
+    </div>
+
+
+
+    <!-- ================================================
+         RISK OVERVIEW
+    ================================================= -->
+
+    <div
+      class="risk-overview"
+      id="riskOverview"
+    >
+
+      <div class="risk-score-card ci-card">
+
+        <span class="ci-label">
+          OVERALL RISK
+        </span>
+
+        <div
+          class="risk-score"
+          id="riskScore"
+        >
+          --
+        </div>
+
+        <div
+          class="risk-level"
+          id="riskLevel"
+        >
+          Awaiting analysis
+        </div>
+
+      </div>
+
+
+      <div class="metric-card ci-card">
+
+        <span class="metric-icon">
+          💊
+        </span>
+
+        <span>
+          Medicines
+        </span>
+
+        <strong id="metricMedicines">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="metric-card ci-card">
+
+        <span class="metric-icon">
+          ⚠
+        </span>
+
+        <span>
+          Alerts
+        </span>
+
+        <strong id="metricAlerts">
+          0
+        </strong>
+
+      </div>
+
+
+      <div class="metric-card ci-card">
+
+        <span class="metric-icon">
+          !
+        </span>
+
+        <span>
+          High Risk
+        </span>
+
+        <strong id="metricHighRisk">
+          0
+        </strong>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================================================
+         ALERT PANEL
+    ================================================= -->
+
+    <div class="ci-card alerts-card">
+
+      <div class="ci-card-header">
+
+        <div>
+
+          <span class="ci-label">
+            CLINICAL ALERTS
+          </span>
+
+          <h2>
+            Risk Intelligence
+          </h2>
+
+        </div>
+
+        <div
+          class="alert-count"
+          id="alertCount"
+        >
+          0
+        </div>
+
+      </div>
+
+
+      <div
+        id="alertsContainer"
+        class="alerts-container"
+      >
+
+        <div class="no-analysis">
+
+          <div>
+            🧠
+          </div>
+
+          <h3>
+            Analysis not yet performed
+          </h3>
+
+          <p>
+            Add medications and run the clinical analysis
+            to generate medication safety alerts.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================================================
+         CLINICAL SUMMARY
+    ================================================= -->
+
+    <div class="ci-card summary-card">
+
+      <div class="ci-card-header">
+
+        <div>
+
+          <span class="ci-label">
+            INTELLIGENT SUMMARY
+          </span>
+
+          <h2>
+            Analysis Summary
+          </h2>
+
+        </div>
+
+        <div class="ci-icon">
+          🧠
+        </div>
+
+      </div>
+
+
+      <div
+        id="analysisSummary"
+        class="analysis-summary"
+      >
+
+        Complete the analysis to generate a summary.
+
+      </div>
+
+    </div>
+
+
+
+    <!-- ================================================
+         RULE ENGINE
+    ================================================= -->
+
+    <div class="ci-card rules-card">
+
+      <div class="ci-card-header">
+
+        <div>
+
+          <span class="ci-label">
+            SAFETY ENGINE
+          </span>
+
+          <h2>
+            Active Analysis Domains
+          </h2>
+
+        </div>
+
+      </div>
+
+
+      <div class="rules-grid">
+
+
+        <div class="rule-item">
+
+          <span>
+            🧓
+          </span>
+
+          <div>
+
+            <strong>
+              Older Adult Risk
+            </strong>
+
+            <small>
+              Age-related medication safety screening
+            </small>
+
+          </div>
+
+          <b>
+            ACTIVE
+          </b>
+
+        </div>
+
+
+        <div class="rule-item">
+
+          <span>
+            💊
+          </span>
+
+          <div>
+
+            <strong>
+              Polypharmacy
+            </strong>
+
+            <small>
+              Medication count and burden screening
+            </small>
+
+          </div>
+
+          <b>
+            ACTIVE
+          </b>
+
+        </div>
+
+
+        <div class="rule-item">
+
+          <span>
+            🔗
+          </span>
+
+          <div>
+
+            <strong>
+              Drug Interactions
+            </strong>
+
+            <small>
+              Potential interaction pattern screening
+            </small>
+
+          </div>
+
+          <b>
+            ACTIVE
+          </b>
+
+        </div>
+
+
+        <div class="rule-item">
+
+          <span>
+            🧪
+          </span>
+
+          <div>
+
+            <strong>
+              Organ Function
+            </strong>
+
+            <small>
+              Renal-risk review prompts
+            </small>
+
+          </div>
+
+          <b>
+            ACTIVE
+          </b>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+
+
+  <!-- ===================================================
+       SAFETY DISCLAIMER
+  ================================================= -->
+
+  <section class="ci-disclaimer">
+
+    <strong>
+      Research Prototype
+    </strong>
+
+    <p>
+
+      This Clinical Intelligence interface is a research
+      and educational prototype. Alerts are decision-support
+      prompts and must not be treated as a diagnosis,
+      prescription, or substitute for assessment by a
+      qualified healthcare professional.
+
+    </p>
+
+  </section>
+
+
+</main>
+
+
+
+<footer class="ci-footer">
+
+  <img
+    src="images/logo.png"
+    alt="Polypharm ADE"
+  >
+
+  <div>
+
+    <strong>
+      Polypharm ADE Clinical Intelligence
+    </strong>
+
+    <span>
+      Smart Clinical Support • Medication Safety • Nairobi
+    </span>
+
+  </div>
+
+</footer>
+
+
+
+<script src="clinical-intelligence.js"></script>
+
+</body>
+
+</html>
